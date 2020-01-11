@@ -1,0 +1,14 @@
+Elements:
+1. Background Pictures
+2. Menu
+3. Score
+4. Timer
+5. Music
+6. Number of lives
+
+Functionalities:
+1. Entering player's name
+2. Start
+3. Pause
+4. Exit
+5. Tochkova istoriq na igrachite.
