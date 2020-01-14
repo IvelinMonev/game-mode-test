@@ -9,6 +9,6 @@ Elements:
 Functionalities:
 1. Entering player's name
 2. Start
-3. Pause
+3. Pause - Added
 4. Exit
 5. Tochkova istoriq na igrachite.

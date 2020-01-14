@@ -30,10 +30,10 @@ private:
 
 	// Timing
 	unsigned int lasttick, fpstick, fps, framecount;
-
 	// Test
 	float testx, testy;
-
+	//Pause
+	bool isPaused;
 	Board* board;
 	Paddle* paddle;
 	Ball* ball;

@@ -1,8 +1,8 @@
 #include "Game.h"
-
 Game::Game() {
 	window = 0;
 	renderer = 0;
+	isPaused = false;
 }
 
 Game::~Game() {
@@ -13,7 +13,7 @@ bool Game::Init() {
 	SDL_Init(SDL_INIT_VIDEO);
 
 	// Create window
-	window = SDL_CreateWindow("Breakout Example - Rembound.com",
+	window = SDL_CreateWindow("Arkanoid",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 	if (!window) {
@@ -41,7 +41,6 @@ bool Game::Init() {
 
 	testx = 0;
 	testy = 0;
-
 	return true;
 }
 
@@ -58,9 +57,8 @@ void Game::Run() {
 	board = new Board(renderer);
 	paddle = new Paddle(renderer);
 	ball = new Ball(renderer);
-
+	
 	NewGame();
-
 	// Main loop
 	while (1) {
 		// Handler events
@@ -68,6 +66,17 @@ void Game::Run() {
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				break;
+			}
+			// Pause event
+			if (e.type == SDL_KEYDOWN) {
+				if (e.key.keysym.sym == SDLK_ESCAPE) {
+					if (isPaused) {
+						isPaused = false;
+					}
+					else {
+						isPaused = true;
+					}
+				}
 			}
 		}
 
@@ -80,17 +89,18 @@ void Game::Run() {
 			framecount = 0;
 			//std::cout << "FPS: " << fps << std::endl;
 			char buf[100];
-			snprintf(buf, 100, "Breakout Example - Rembound.com (fps: %u)", fps);
+			snprintf(buf, 100, "Arkanoid (fps: %u)", fps);
 			SDL_SetWindowTitle(window, buf);
 		}
 		else {
 			framecount++;
 		}
 		lasttick = curtick;
-
 		// Update and render the game
-		Update(delta);
-		Render(delta);
+		if (!isPaused) {
+			Update(delta);
+			Render(delta);
+		}
 	}
 
 	delete board;

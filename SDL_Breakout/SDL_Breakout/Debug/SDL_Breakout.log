@@ -1,17 +1,3 @@
-﻿  Ball.cpp
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Ball.cpp(30,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Ball.cpp(31,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Board.cpp
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Ball.cpp(37,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(12,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(51,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Entity.cpp
-  Game.cpp
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(52,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-  Paddle.cpp
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Game.cpp(78,21): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Paddle.cpp(28,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Paddle.cpp(29,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  Game.cpp
+C:\game-mode-test\SDL_Breakout\SDL_Breakout\Game.cpp(86,21): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
   SDL_Breakout.vcxproj -> C:\game-mode-test\SDL_Breakout\Debug\SDL_Breakout.exe
