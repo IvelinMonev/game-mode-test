@@ -1,3 +1,9 @@
-﻿  Game.cpp
-C:\game-mode-test\SDL_Breakout\SDL_Breakout\Game.cpp(86,21): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+﻿  Board.cpp
+C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(12,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(51,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\game-mode-test\SDL_Breakout\SDL_Breakout\Board.cpp(52,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+C:\game-mode-test\SDL_Breakout\SDL_Breakout\Game.cpp(82,21): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating Code...
   SDL_Breakout.vcxproj -> C:\game-mode-test\SDL_Breakout\Debug\SDL_Breakout.exe

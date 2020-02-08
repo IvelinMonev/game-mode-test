@@ -56,7 +56,6 @@ void Board::Render(float delta) {
 			SDL_RenderCopy(renderer, bricktexture, &srcrect, &dstrect);
 		}
 	}
-
 	// Render sides
 	SDL_Rect dstrect;
 	dstrect.x = 0;

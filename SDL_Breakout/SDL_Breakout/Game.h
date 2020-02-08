@@ -25,7 +25,6 @@ public:
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-
 	SDL_Texture* texture;
 
 	// Timing
@@ -33,7 +32,7 @@ private:
 	// Test
 	float testx, testy;
 	//Pause
-	bool isPaused;
+	bool isRunning;
 	Board* board;
 	Paddle* paddle;
 	Ball* ball;
@@ -52,7 +51,6 @@ private:
 	float GetReflection(float hitx);
 	void CheckPaddleCollisions();
 	void CheckBrickCollisions();
-	void CheckBrickCollisions2();
 	void BallBrickResponse(int dirindex);
 	int GetBrickCount();
 };

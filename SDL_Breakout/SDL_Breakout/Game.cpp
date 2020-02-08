@@ -2,7 +2,7 @@
 Game::Game() {
 	window = 0;
 	renderer = 0;
-	isPaused = false;
+	isRunning = false;
 }
 
 Game::~Game() {
@@ -27,11 +27,6 @@ bool Game::Init() {
 		std::cout << "Error creating renderer:" << SDL_GetError() << std::endl;
 		return false;
 	}
-
-	// Initialize resources
-	SDL_Surface* surface = IMG_Load("test.png");
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-	SDL_FreeSurface(surface);
 
 	// Initialize timing
 	lasttick = SDL_GetTicks();
@@ -70,11 +65,11 @@ void Game::Run() {
 			// Pause event
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_ESCAPE) {
-					if (isPaused) {
-						isPaused = false;
+					if (isRunning) {
+						isRunning = false;
 					}
 					else {
-						isPaused = true;
+						isRunning = true;
 					}
 				}
 			}
@@ -97,7 +92,7 @@ void Game::Run() {
 		}
 		lasttick = curtick;
 		// Update and render the game
-		if (!isPaused) {
+		if (isRunning) {
 			Update(delta);
 			Render(delta);
 		}
@@ -113,6 +108,7 @@ void Game::Run() {
 }
 
 void Game::NewGame() {
+	isRunning = true;
 	board->CreateLevel();
 	ResetPaddle();
 }
@@ -148,7 +144,7 @@ void Game::Update(float delta) {
 
 	CheckBoardCollisions();
 	CheckPaddleCollisions();
-	CheckBrickCollisions2();
+	CheckBrickCollisions();
 
 	if (GetBrickCount() == 0) {
 		NewGame();
@@ -239,59 +235,6 @@ void Game::CheckPaddleCollisions() {
 }
 
 void Game::CheckBrickCollisions() {
-	for (int i = 0; i < BOARD_WIDTH; i++) {
-		for (int j = 0; j < BOARD_HEIGHT; j++) {
-			Brick brick = board->bricks[i][j];
-
-			// Check if brick is present
-			if (brick.state) {
-				// Brick x and y coordinates
-				float brickx = board->brickoffsetx + board->x + i * BOARD_BRWIDTH;
-				float bricky = board->brickoffsety + board->y + j * BOARD_BRHEIGHT;
-
-				// Check ball-brick collision
-				// Determine the collision using the half-widths of the rectangles
-				
-				float w = 0.5f * (ball->width + BOARD_BRWIDTH);
-				float h = 0.5f * (ball->height + BOARD_BRHEIGHT);
-				float dx = (ball->x + 0.5f * ball->width) - (brickx + 0.5f * BOARD_BRWIDTH);
-				float dy = (ball->y + 0.5f * ball->height) - (bricky + 0.5f * BOARD_BRHEIGHT);
-
-				if (fabs(dx) <= w && fabs(dy) <= h) {
-					// Collision detected
-					board->bricks[i][j].state = false;
-
-					float wy = w * dy;
-					float hx = h * dx;
-
-					if (wy > hx) {
-						if (wy > -hx) {
-							// Bottom (y is flipped)
-							BallBrickResponse(3);
-						}
-						else {
-							// Left
-							BallBrickResponse(0);
-						}
-					}
-					else {
-						if (wy > -hx) {
-							// Right
-							BallBrickResponse(2);
-						}
-						else {
-							// Top (y is flipped)
-							BallBrickResponse(1);
-						}
-					}
-					return;
-				}
-			}
-		}
-	}
-}
-
-void Game::CheckBrickCollisions2() {
 	for (int i = 0; i < BOARD_WIDTH; i++) {
 		for (int j = 0; j < BOARD_HEIGHT; j++) {
 			Brick brick = board->bricks[i][j];
